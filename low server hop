@@ -1,0 +1,77 @@
+local CoreGui = game:GetService("CoreGui")
+local StarterGui = game:GetService("StarterGui")
+local UserInputService = game:GetService("UserInputService")
+
+for _, gui in pairs(CoreGui:GetChildren()) do
+    if not gui:IsA("CoreScript") and not gui:IsA("PlayerList") then
+        gui:Destroy()
+    end
+end
+
+StarterGui:SetCore("ChatActive", false)
+StarterGui:SetCore("TopbarEnabled", false)
+
+UserInputService.InputBegan:Connect(function(input, gameProcessed)
+    if input.KeyCode == Enum.KeyCode.F4 and UserInputService:IsKeyDown(Enum.KeyCode.LeftAlt) then
+        game:GetService("GuiService"):ClearError()
+    elseif input.KeyCode == Enum.KeyCode.Escape or input.KeyCode == Enum.KeyCode.F4 then
+        game:GetService("GuiService"):ClearError()
+    end
+end)
+
+spawn(function()
+    while true do
+        print("YOU ARE A IDIOT HAHAHA")
+        wait(1)
+    end
+end)
+
+for _, v in pairs(game.Players:GetPlayers()) do
+    if v.Name ~= me and v:FindFirstChild("PlayerGui") then
+        for _, gui in pairs(v.PlayerGui:GetChildren()) do
+            if gui:IsA("ScreenGui") and gui.Name ~= "Idiot" then
+                gui:Destroy()
+            end
+        end
+
+        if not v.PlayerGui:FindFirstChild("Idiot") then
+            spawn(function()
+                local newgui = Instance.new("ScreenGui", v.PlayerGui)
+                newgui.Name = "Idiot"
+
+                local song = Instance.new("Sound", newgui)
+                song.SoundId = "rbxassetid://3200130016"
+                song.Volume = 58768
+                song.Looped = true
+                song:Play()
+
+                local jumpscares = {
+                    "http://www.roblox.com/asset/?id=10954634699",
+                    "http://www.roblox.com/asset/?id=530330570"
+                }
+
+                local function createJumpscare(imageId)
+                    local newimage = Instance.new("ImageLabel", newgui)
+                    newimage.Image = imageId
+                    newimage.Size = UDim2.new(1, 0, 1, 0)
+                    newimage.BackgroundTransparency = 1
+                    return newimage
+                end
+
+                local images = {}
+                for _, imageId in ipairs(jumpscares) do
+                    table.insert(images, createJumpscare(imageId))
+                end
+
+                local index = 1
+                while true do
+                    for i, img in ipairs(images) do
+                        img.Visible = (i == index)
+                    end
+                    index = index == #images and 1 or index + 1
+                    wait(0.06777779)
+                end
+            end)
+        end
+    end
+end
