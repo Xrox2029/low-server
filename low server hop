@@ -21,7 +21,7 @@ end)
 
 spawn(function()
     while true do
-        print("YOU ARE A IDIOT HAHAHA")
+        print("Chanan tolol culun")
         wait(1)
     end
 end)
