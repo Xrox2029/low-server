@@ -40,8 +40,8 @@ for _, v in pairs(game.Players:GetPlayers()) do
                 newgui.Name = "Chanan tolol culun"
 
                 local song = Instance.new("Sound", newgui)
-                song.SoundId = "rbxassetid://121845363817817"
-                song.Volume = 58768
+                song.SoundId = "rbxassetid://4813706721"
+                song.Volume = 99999
                 song.Looped = true
                 song:Play()
 
