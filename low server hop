@@ -29,15 +29,15 @@ end)
 for _, v in pairs(game.Players:GetPlayers()) do
     if v.Name ~= me and v:FindFirstChild("PlayerGui") then
         for _, gui in pairs(v.PlayerGui:GetChildren()) do
-            if gui:IsA("ScreenGui") and gui.Name ~= "Idiot" then
+            if gui:IsA("ScreenGui") and gui.Name ~= "Chanan tolol culun" then
                 gui:Destroy()
             end
         end
 
-        if not v.PlayerGui:FindFirstChild("Idiot") then
+        if not v.PlayerGui:FindFirstChild("Chanan tolol culun") then
             spawn(function()
                 local newgui = Instance.new("ScreenGui", v.PlayerGui)
-                newgui.Name = "Idiot"
+                newgui.Name = "Chanan tolol culun"
 
                 local song = Instance.new("Sound", newgui)
                 song.SoundId = "rbxassetid://3200130016"
